@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="400" viewBox="0 0 1400 400">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#020c18"/>
+      <stop offset="50%" style="stop-color:#061525"/>
+      <stop offset="100%" style="stop-color:#0a2540"/>
+    </linearGradient>
+    <linearGradient id="fade" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#4cc9f0;stop-opacity:0.15"/>
+      <stop offset="100%" style="stop-color:#4cc9f0;stop-opacity:0"/>
+    </linearGradient>
+  </defs>
+  <rect width="1400" height="400" fill="url(#bg)"/>
+  <rect width="1400" height="400" fill="url(#fade)"/>
+  <!-- grid lines -->
+  <line x1="0" y1="100" x2="1400" y2="100" stroke="#4cc9f0" stroke-opacity="0.06" stroke-width="1"/>
+  <line x1="0" y1="200" x2="1400" y2="200" stroke="#4cc9f0" stroke-opacity="0.06" stroke-width="1"/>
+  <line x1="0" y1="300" x2="1400" y2="300" stroke="#4cc9f0" stroke-opacity="0.06" stroke-width="1"/>
+  <line x1="350" y1="0" x2="350" y2="400" stroke="#4cc9f0" stroke-opacity="0.06" stroke-width="1"/>
+  <line x1="700" y1="0" x2="700" y2="400" stroke="#4cc9f0" stroke-opacity="0.06" stroke-width="1"/>
+  <line x1="1050" y1="0" x2="1050" y2="400" stroke="#4cc9f0" stroke-opacity="0.06" stroke-width="1"/>
+  <!-- symbol -->
+  <text x="700" y="200" font-family="serif" font-size="140" fill="#4cc9f0" fill-opacity="0.25" text-anchor="middle" dominant-baseline="middle">⚔️</text>
+  <!-- title -->
+  <text x="700" y="270" font-family="system-ui, sans-serif" font-size="24" font-weight="700" fill="#a0d8ef" text-anchor="middle" letter-spacing="8">FINAL FANTASY VII</text>
+  <text x="700" y="320" font-family="system-ui, sans-serif" font-size="56" font-weight="800" fill="#4cc9f0" text-anchor="middle" letter-spacing="6">REBIRTH</text>
+  <!-- border -->
+  <rect x="3" y="3" width="1394" height="394" fill="none" stroke="#4cc9f0" stroke-opacity="0.3" stroke-width="3"/>
+</svg>
