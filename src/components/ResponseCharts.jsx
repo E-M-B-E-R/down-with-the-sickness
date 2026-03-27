@@ -2,10 +2,6 @@ import {
   PieChart,
   Pie,
   Cell,
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
   Tooltip,
   ResponsiveContainer,
 } from 'recharts';
@@ -14,7 +10,6 @@ import styles from '../styles/ResponseCharts.module.css';
 
 const SICK_COLOR = '#F07178';
 const SAFE_COLOR = '#C3E88D';
-const PLATFORM_COLORS = ['#82AAFF', '#C792EA', '#FFCB6B', '#C3E88D', '#89DDFF'];
 const FIX_COLORS = ['#89DDFF', '#FFCB6B', '#C792EA'];
 
 const tooltipStyle = {
@@ -25,7 +20,7 @@ const tooltipStyle = {
 };
 
 const RADIAN = Math.PI / 180;
-function renderCustomLabel({ cx, cy, midAngle, innerRadius, outerRadius, percent, name }) {
+function renderCustomLabel({ cx, cy, midAngle, innerRadius, outerRadius, percent }) {
   if (percent < 0.05) return null;
   const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
   const x = cx + radius * Math.cos(-midAngle * RADIAN);
@@ -56,15 +51,6 @@ export default function ResponseCharts({ gameId }) {
     { name: 'Felt Sick', value: sickCount },
     { name: 'No Sickness', value: notSickCount },
   ].filter(d => d.value > 0);
-
-  const platformMap = {};
-  responses.forEach(r => {
-    platformMap[r.platform] = (platformMap[r.platform] || 0) + 1;
-  });
-  const platformData = Object.entries(platformMap).map(([platform, count]) => ({
-    platform,
-    responses: count,
-  }));
 
   const sickWithFix = responses.filter(r => r.feltSick && r.hadFix && r.fixType);
   const fixMap = {};
@@ -107,28 +93,12 @@ export default function ResponseCharts({ gameId }) {
           </ResponsiveContainer>
           <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', marginTop: '0.5rem' }}>
             {sickData.map((entry, i) => (
-              <span key={entry.name} style={{ display: 'flex', alignItems: 'center', gap: '0.3rem', fontSize: '0.75rem', color: '#a0a0a0' }}>
+              <span key={entry.name} style={{ display: 'flex', alignItems: 'center', gap: '0.3rem', fontSize: '0.75rem', color: '#676E95' }}>
                 <span style={{ width: 10, height: 10, borderRadius: '50%', background: i === 0 ? SICK_COLOR : SAFE_COLOR, display: 'inline-block' }} />
                 {entry.name}
               </span>
             ))}
           </div>
-        </div>
-
-        <div className={styles.chartCard}>
-          <p className={styles.chartTitle}>Responses by Platform</p>
-          <ResponsiveContainer width="100%" height={200}>
-            <BarChart data={platformData} margin={{ top: 5, right: 10, left: -20, bottom: 5 }}>
-              <XAxis dataKey="platform" tick={{ fill: '#a0a0a0', fontSize: 11 }} />
-              <YAxis tick={{ fill: '#a0a0a0', fontSize: 11 }} allowDecimals={false} />
-              <Tooltip contentStyle={tooltipStyle} />
-              <Bar dataKey="responses" radius={[4, 4, 0, 0]}>
-                {platformData.map((_, i) => (
-                  <Cell key={i} fill={PLATFORM_COLORS[i % PLATFORM_COLORS.length]} />
-                ))}
-              </Bar>
-            </BarChart>
-          </ResponsiveContainer>
         </div>
 
         {fixData.length > 0 && (
@@ -154,7 +124,7 @@ export default function ResponseCharts({ gameId }) {
             </ResponsiveContainer>
             <div style={{ display: 'flex', gap: '0.75rem', justifyContent: 'center', flexWrap: 'wrap', marginTop: '0.5rem' }}>
               {fixData.map((entry, i) => (
-                <span key={entry.name} style={{ display: 'flex', alignItems: 'center', gap: '0.3rem', fontSize: '0.72rem', color: '#a0a0a0' }}>
+                <span key={entry.name} style={{ display: 'flex', alignItems: 'center', gap: '0.3rem', fontSize: '0.72rem', color: '#676E95' }}>
                   <span style={{ width: 10, height: 10, borderRadius: '50%', background: FIX_COLORS[i % FIX_COLORS.length], display: 'inline-block' }} />
                   {entry.name}
                 </span>

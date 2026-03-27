@@ -6,14 +6,12 @@ const FIX_TYPES = ['In-game settings', 'Config file', 'Mod'];
 
 export default function SurveyForm({ game }) {
   const { addResponse } = useSurveyData();
-  const [platform, setPlatform] = useState('');
   const [feltSick, setFeltSick] = useState(null);
   const [hadFix, setHadFix] = useState(null);
   const [fixType, setFixType] = useState('');
   const [submitted, setSubmitted] = useState(false);
 
   function resetForm() {
-    setPlatform('');
     setFeltSick(null);
     setHadFix(null);
     setFixType('');
@@ -22,9 +20,8 @@ export default function SurveyForm({ game }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    if (!platform || feltSick === null) return;
+    if (feltSick === null) return;
     addResponse(game.id, {
-      platform,
       feltSick,
       hadFix: feltSick ? hadFix : null,
       fixType: feltSick && hadFix ? fixType : null,
@@ -33,7 +30,6 @@ export default function SurveyForm({ game }) {
   }
 
   const isSubmitDisabled =
-    !platform ||
     feltSick === null ||
     (feltSick === true && hadFix === null) ||
     (feltSick === true && hadFix === true && !fixType);
@@ -55,45 +51,24 @@ export default function SurveyForm({ game }) {
       <h2 className={styles.heading}>Share your experience</h2>
 
       <div className={styles.field}>
-        <label className={styles.label}>Which platform did you play on?</label>
-        <select
-          className={styles.select}
-          value={platform}
-          onChange={e => {
-            setPlatform(e.target.value);
-            setFeltSick(null);
-            setHadFix(null);
-            setFixType('');
-          }}
-        >
-          <option value="">Select a platform</option>
-          {game.platforms.map(p => (
-            <option key={p} value={p}>{p}</option>
-          ))}
-        </select>
-      </div>
-
-      {platform && (
-        <div className={styles.field}>
-          <label className={styles.label}>Does this game make you motion sick?</label>
-          <div className={styles.radioGroup}>
-            <button
-              type="button"
-              className={`${styles.radioBtn} ${feltSick === true ? styles.active : ''}`}
-              onClick={() => { setFeltSick(true); setHadFix(null); setFixType(''); }}
-            >
-              Yes
-            </button>
-            <button
-              type="button"
-              className={`${styles.radioBtn} ${feltSick === false ? styles.activeNo : ''}`}
-              onClick={() => { setFeltSick(false); setHadFix(null); setFixType(''); }}
-            >
-              No
-            </button>
-          </div>
+        <label className={styles.label}>Does this game make you motion sick?</label>
+        <div className={styles.radioGroup}>
+          <button
+            type="button"
+            className={`${styles.radioBtn} ${feltSick === true ? styles.active : ''}`}
+            onClick={() => { setFeltSick(true); setHadFix(null); setFixType(''); }}
+          >
+            Yes
+          </button>
+          <button
+            type="button"
+            className={`${styles.radioBtn} ${feltSick === false ? styles.activeNo : ''}`}
+            onClick={() => { setFeltSick(false); setHadFix(null); setFixType(''); }}
+          >
+            No
+          </button>
         </div>
-      )}
+      </div>
 
       {feltSick === true && (
         <div className={styles.field}>
@@ -143,3 +118,4 @@ export default function SurveyForm({ game }) {
     </form>
   );
 }
+

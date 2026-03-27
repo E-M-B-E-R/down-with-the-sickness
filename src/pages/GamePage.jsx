@@ -25,11 +25,6 @@ export default function GamePage() {
         <div className={styles.heroContent}>
           <Link to="/" className={styles.backLink}>← All Games</Link>
           <h1 className={styles.title}>{game.name}</h1>
-          <div className={styles.platforms}>
-            {game.platforms.map(p => (
-              <span key={p} className={styles.platform}>{p}</span>
-            ))}
-          </div>
         </div>
       </div>
 
