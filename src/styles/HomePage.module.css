@@ -6,7 +6,7 @@
   text-align: center;
   padding: 3rem 1rem 2.5rem;
   border-bottom: 1px solid var(--border);
-  background: linear-gradient(180deg, #1a0508 0%, var(--bg-primary) 100%);
+  background: linear-gradient(180deg, #1f1a35 0%, var(--bg-primary) 100%);
 }
 
 .logo {

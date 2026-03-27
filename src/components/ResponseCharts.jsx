@@ -12,16 +12,16 @@ import {
 import { useSurveyData } from '../context/SurveyDataContext';
 import styles from '../styles/ResponseCharts.module.css';
 
-const SICK_COLOR = '#e94560';
-const SAFE_COLOR = '#4caf50';
-const PLATFORM_COLORS = ['#4cc9f0', '#7c3aed', '#f59e0b', '#10b981', '#ec4899'];
-const FIX_COLORS = ['#4cc9f0', '#f59e0b', '#a78bfa'];
+const SICK_COLOR = '#F07178';
+const SAFE_COLOR = '#C3E88D';
+const PLATFORM_COLORS = ['#82AAFF', '#C792EA', '#FFCB6B', '#C3E88D', '#89DDFF'];
+const FIX_COLORS = ['#89DDFF', '#FFCB6B', '#C792EA'];
 
 const tooltipStyle = {
-  background: '#1e1e1e',
-  border: '1px solid #2e2e2e',
+  background: '#32374D',
+  border: '1px solid #3D4166',
   borderRadius: '8px',
-  color: '#f0f0f0',
+  color: '#A6ACCD',
 };
 
 const RADIAN = Math.PI / 180;
